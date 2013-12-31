@@ -1,0 +1,52 @@
+apply plugin: 'idea'
+apply from: "./libraries.gradle"
+
+ext {
+    expectedGradleVersion = '1.10'
+    folderTargetVersion = '1.0'
+    javaLanguageLevel = '1.7'
+}
+buildscript {
+    repositories {
+        mavenCentral()
+        mavenLocal()
+
+    }
+}
+
+allprojects {
+    repositories {
+        mavenCentral() // maven { url: 'http://jcenter.bintray.com' }
+        mavenLocal()
+    }
+}
+
+apply from: "./libraries.gradle"
+
+
+task wrapper(type: Wrapper) { gradleVersion = '1.10' }
+
+subprojects { subProject ->
+    apply plugin: 'java'
+    apply plugin: 'scala'
+
+    defaultTasks 'build'
+
+    group = 'me.folder'
+    version = rootProject.folderTargetVersion
+
+    buildDir = "target"
+
+    // appropriately inject the common dependencies into each sub-project
+    dependencies {
+        compile(libraries.commonsCodec)
+        testCompile(libraries.scalatest)
+
+//        compile( libraries.logging )
+//        testRuntime( libraries.log4j )
+    }
+
+    targetCompatibility = rootProject.javaLanguageLevel
+    sourceCompatibility = rootProject.javaLanguageLevel
+
+}

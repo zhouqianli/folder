@@ -1,0 +1,12 @@
+dependencies {
+//    compile project( ':common' )
+}
+
+def pomName() {
+    return 'Folder/Common storage access library'
+}
+
+def pomDescription() {
+    return 'Common storage access library'
+}
+

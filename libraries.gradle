@@ -1,0 +1,11 @@
+ext {
+    commonsCodecVersion = '1.8'
+    scalaLibVersion = '2.10.3'
+    scalatestVersion = '2.0'
+
+    libraries = [
+            scalaLibrary: "org.scala-lang:scala-library:${scalaLibVersion}",
+            scalatest: "org.scalatest:scalatest_2.10:${scalatestVersion}",
+            commonsCodec: "commons-codec:commons-codec:${commonsCodecVersion}"
+    ]
+}
