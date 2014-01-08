@@ -3,9 +3,10 @@ apply from: "./libraries.gradle"
 
 ext {
     expectedGradleVersion = '1.10'
-    folderTargetVersion = '1.0'
+    folderzTargetVersion = '1.0'
     javaLanguageLevel = '1.7'
 }
+
 buildscript {
     repositories {
         mavenCentral()
@@ -32,8 +33,8 @@ subprojects { subProject ->
 
     defaultTasks 'build'
 
-    group = 'me.folder'
-    version = rootProject.folderTargetVersion
+    group = 'com.folderz'
+    version = rootProject.folderzTargetVersion
 
     buildDir = "target"
 
